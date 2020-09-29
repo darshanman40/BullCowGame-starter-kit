@@ -1,0 +1,58 @@
+
+#include "UWordListManager.h"
+#include "BullCowGame.h"
+
+#include "UObject/Object.h"
+#include "GameLibrary/Headers/UArrayHelper.h"
+
+
+
+
+UWordListManager::UWordListManager(const FObjectInitializer& ObjectInitializer)	: 
+    Super(ObjectInitializer)
+{
+    ArraySize = 0;
+    CurrentIndex = 0;
+}
+
+void UWordListManager::AddItem(int32 item) // virtual
+{
+    IndexArray.Add(item);
+    ArraySize++;
+}
+
+void UWordListManager::ShuffleArray(int32 seed) // virtual
+{
+    UArrayHelper::ShuffleList<int32>(IndexArray, ArraySize, seed);
+    CurrentIndex = 0;
+}
+
+// int32 UWordListManager::GetCurrentIndexNIncr() // TODO: DELETE
+// {
+    
+//     if (CurrentIndex < ArraySize)
+//     {
+//         ++CurrentIndex;
+//         return IndexArray[CurrentIndex-1];
+//     }
+    
+//     return -1;
+// }
+
+int32 UWordListManager::GetCurrentIndex() // virtual
+{
+    if (CurrentIndex < ArraySize) return IndexArray[CurrentIndex];
+    
+    return -1;
+}
+
+int32 UWordListManager::GetNextIndex() // virtual
+{
+    ++CurrentIndex;
+    return GetCurrentIndex();
+}
+
+int32 UWordListManager::GetArraySize() // virtual
+{
+    return ArraySize;
+}

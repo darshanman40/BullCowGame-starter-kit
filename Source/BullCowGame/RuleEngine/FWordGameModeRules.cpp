@@ -1,0 +1,1 @@
+#include "RuleEngine/FWordGameModeRules.h"

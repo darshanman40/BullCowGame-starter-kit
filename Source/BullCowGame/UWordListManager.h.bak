@@ -1,0 +1,32 @@
+#pragma once
+
+#include "CoreMinimal.h"
+#include "UObject/Object.h"
+#include "UWordListManager.generated.h"
+
+UCLASS()
+class BULLCOWGAME_API UWordListManager : public UObject
+{
+    GENERATED_UCLASS_BODY()
+
+
+    private:
+    TArray<int32> IndexArray;
+    int32 ArraySize;
+    int32 CurrentIndex;
+
+    public:
+    // UWordList();
+    // UWordList(int32 size);
+    
+    void AddItem(int32 item);
+    void ShuffleArray(int32 seed);
+    // int32 GetCurrentIndexNIncr(); // TODO: DELETE
+    int32 GetCurrentIndex();
+    int32 GetNextIndex();
+    int32 GetArraySize();
+    
+
+    
+    
+};
